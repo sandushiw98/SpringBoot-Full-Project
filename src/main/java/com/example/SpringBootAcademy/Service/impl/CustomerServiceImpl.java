@@ -11,6 +11,9 @@ import com.example.SpringBootAcademy.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
@@ -69,5 +72,28 @@ public class CustomerServiceImpl implements CustomerService {
             throw new RuntimeException("No customer");
         }
 
+    }
+
+    @Override
+    public List<CustomerDto> getAllCustomers() {
+        List<Customer> getAllCustomer = customerRepo.findAll();
+        List<CustomerDto> customerDtoList = new ArrayList<>();
+
+        for(Customer customer : getAllCustomer){
+            CustomerDto customerDto = new CustomerDto(
+                    customer.getCustomerid(),
+                    customer.getCustomerName(),
+                    customer.getCustomerAddress(),
+                    customer.getContactNumber(),
+                    customer.getCustomerSalary(),
+                    customer.getNic(),
+                    customer.isActive()
+
+            );
+            customerDtoList.add(customerDto);
+
+        }
+
+        return customerDtoList ;
     }
 }

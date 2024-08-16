@@ -6,6 +6,8 @@ package com.example.SpringBootAcademy.Service;
 import com.example.SpringBootAcademy.Dto.CustomerDto;
 import com.example.SpringBootAcademy.Dto.CustomerUpdateDto;
 
+import java.util.List;
+
 public interface CustomerService {
 
    public String saveCustomer(CustomerDto customerDto);
@@ -13,4 +15,6 @@ public interface CustomerService {
 
 
    CustomerDto getCustomerById(int customerId);
+
+    List<CustomerDto> getAllCustomers();
 }
