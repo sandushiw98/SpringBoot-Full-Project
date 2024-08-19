@@ -6,14 +6,12 @@ package com.example.SpringBootAcademy.Entity;
 
 
 import com.vladmihalcea.hibernate.type.json.JsonType;
+import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.hibernate.annotations.TypeDefs;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import java.util.ArrayList;
 
@@ -25,6 +23,7 @@ import java.util.ArrayList;
 })
 public class Customer {
   @Id
+  @GeneratedValue(strategy = GenerationType.AUTO )
   @Column(name = "customer_id", length = 45)
   private int customerid;
 
