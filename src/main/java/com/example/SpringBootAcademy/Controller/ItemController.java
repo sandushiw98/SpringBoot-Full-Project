@@ -1,14 +1,13 @@
 package com.example.SpringBootAcademy.Controller;
 
 
-import com.example.SpringBootAcademy.Dto.CustomerDto;
-import com.example.SpringBootAcademy.Dto.ItemDto;
+import com.example.SpringBootAcademy.Dto.request.ItemDto;
+import com.example.SpringBootAcademy.Dto.response.ItemGetResponseDTO;
 import com.example.SpringBootAcademy.Service.ItemService;
-import com.example.SpringBootAcademy.util.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -25,6 +24,14 @@ public class ItemController {
     public String saveItem(@RequestBody ItemDto itemDto) {
         String message = itemService.saveItem(itemDto);
         return message;
+    }
+
+    @GetMapping (path ="/get-by-name",
+                  params = "name"
+    )
+    public List<ItemGetResponseDTO> getItemByNameAndStatus(@RequestParam (value = "name") String itemName){
+        List<ItemGetResponseDTO> itemDTOS = itemService.getItemByNameAndStatus(itemName);
+        return itemDTOS;
     }
 
 

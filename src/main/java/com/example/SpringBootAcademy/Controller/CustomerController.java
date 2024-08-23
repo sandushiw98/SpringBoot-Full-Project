@@ -4,7 +4,7 @@ package com.example.SpringBootAcademy.Controller;
 
 
 import com.example.SpringBootAcademy.Dto.CustomerDto;
-import com.example.SpringBootAcademy.Dto.CustomerUpdateDto;
+import com.example.SpringBootAcademy.Dto.request.CustomerUpdateDto;
 import com.example.SpringBootAcademy.Service.CustomerService;
 import com.example.SpringBootAcademy.util.StandardResponse;
 import org.springframework.beans.factory.annotation.Autowired;

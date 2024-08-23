@@ -1,4 +1,4 @@
-package com.example.SpringBootAcademy.Dto;
+package com.example.SpringBootAcademy.Dto.request;
 
 import com.example.SpringBootAcademy.Entity.enums.MesuringUnitType;
 import lombok.AllArgsConstructor;

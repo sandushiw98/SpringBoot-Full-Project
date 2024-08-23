@@ -4,7 +4,7 @@ package com.example.SpringBootAcademy.Service.impl;
 
 
 import com.example.SpringBootAcademy.Dto.CustomerDto;
-import com.example.SpringBootAcademy.Dto.CustomerUpdateDto;
+import com.example.SpringBootAcademy.Dto.request.CustomerUpdateDto;
 import com.example.SpringBootAcademy.Entity.Customer;
 import com.example.SpringBootAcademy.Repository.CustomerRepo;
 import com.example.SpringBootAcademy.Service.CustomerService;

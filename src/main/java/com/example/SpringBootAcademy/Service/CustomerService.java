@@ -4,7 +4,7 @@ package com.example.SpringBootAcademy.Service;
 
 
 import com.example.SpringBootAcademy.Dto.CustomerDto;
-import com.example.SpringBootAcademy.Dto.CustomerUpdateDto;
+import com.example.SpringBootAcademy.Dto.request.CustomerUpdateDto;
 
 import java.util.List;
 

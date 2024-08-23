@@ -1,4 +1,4 @@
-package com.example.SpringBootAcademy.Dto;
+package com.example.SpringBootAcademy.Dto.request;
 
 //@author Sandushi Weraduwa
 
