@@ -10,6 +10,8 @@ public class CustomerUpdateDto {
   private String customerAddress;
   private double customerSalary;
 
+
+
   public CustomerUpdateDto() {
   }
 
