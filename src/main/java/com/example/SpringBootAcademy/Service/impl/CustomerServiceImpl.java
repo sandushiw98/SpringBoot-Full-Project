@@ -8,29 +8,41 @@ import com.example.SpringBootAcademy.Dto.request.CustomerUpdateDto;
 import com.example.SpringBootAcademy.Entity.Customer;
 import com.example.SpringBootAcademy.Repository.CustomerRepo;
 import com.example.SpringBootAcademy.Service.CustomerService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private CustomerRepo customerRepo;
+//    @Override
+//    public String saveCustomer(CustomerDto customerDto) {
+//        Customer customer = new Customer(
+//                customerDto.getCustomerid(),
+//                customerDto.getCustomerName(),
+//                customerDto.getCustomerAddress(),
+//                customerDto.getContactNumber(),
+//                customerDto.getCustomerSalary(),
+//                customerDto.getNic(),
+//                customerDto.isActive()
+//        );
+//        System.out.println(customerDto.getCustomerAddress());
+//        customerRepo.save(customer);
+//        return customerDto.getCustomerName()+ " saved successfully" ;
+//    }
+
     @Override
     public String saveCustomer(CustomerDto customerDto) {
-        Customer customer = new Customer(
-                customerDto.getCustomerid(),
-                customerDto.getCustomerName(),
-                customerDto.getCustomerAddress(),
-                customerDto.getContactNumber(),
-                customerDto.getCustomerSalary(),
-                customerDto.getNic(),
-                customerDto.isActive()
-        );
+        Customer customer = modelMapper.map(customerDto,Customer.class);
         System.out.println(customerDto.getCustomerAddress());
         customerRepo.save(customer);
         return customerDto.getCustomerName()+ " saved successfully" ;
