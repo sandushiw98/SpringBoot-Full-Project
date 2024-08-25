@@ -12,4 +12,6 @@ public interface ItemService {
     public String saveItem(ItemDto itemDto);
 
     List<ItemGetResponseDTO> getItemByNameAndStatus(String itemName);
+
+    List<ItemGetResponseDTO> getItemByNameAndStatusByMapstruct(String itemName);
 }
