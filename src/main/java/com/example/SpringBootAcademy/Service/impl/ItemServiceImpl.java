@@ -5,6 +5,7 @@ import com.example.SpringBootAcademy.Dto.response.ItemGetResponseDTO;
 import com.example.SpringBootAcademy.Entity.Item;
 import com.example.SpringBootAcademy.Repository.ItemRepo;
 import com.example.SpringBootAcademy.Service.ItemService;
+import com.example.SpringBootAcademy.util.mappers.ItemMapper;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class ItemServiceImpl implements ItemService {
 
     @Autowired
     private ItemRepo itemRepo;
+
+    @Autowired
+    private ItemMapper itemMapper;
 
     @Override
     public String saveItem(ItemDto itemDto) {
@@ -44,5 +48,17 @@ public class ItemServiceImpl implements ItemService {
             throw new RuntimeException("Item is not Active");
         }
 
+    }
+
+    @Override
+    public List<ItemGetResponseDTO> getItemByNameAndStatusByMapstruct(String itemName) {
+        boolean b = true;
+        List<Item> item = itemRepo.findAllByItemNameEqualsAndActiveEquals(itemName, b);
+        if (item.size() > 0) {
+            List<ItemGetResponseDTO> itemGetResponse = itemMapper.entityListToDtoList(item);
+            return itemGetResponse;
+        } else {
+            throw new RuntimeException("Item is not active");
+        }
     }
 }
