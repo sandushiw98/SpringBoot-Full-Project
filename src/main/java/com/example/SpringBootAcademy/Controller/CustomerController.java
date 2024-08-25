@@ -39,16 +39,31 @@ public class CustomerController {
 
   }
 
+//  @GetMapping(
+//          path= "/get-by-id",
+//          params = "id"
+//  )
+//    public CustomerDto getCustomerById(@RequestParam(value ="id") int customerId)
+//  {
+//        CustomerDto customerDto = customerService.getCustomerById(customerId);
+//        return customerDto;
+//
+//  }
+
   @GetMapping(
-          path= "/get-by-id",
+          path = "/get-by-id",
           params = "id"
   )
-    public CustomerDto getCustomerById(@RequestParam(value ="id") int customerId)
+
+  public ResponseEntity<StandardResponse> getCustomerById(@RequestParam(value = "id") int customerId)
   {
-        CustomerDto customerDto = customerService.getCustomerById(customerId);
-        return customerDto;
+      CustomerDto customerDto = customerService.getCustomerById(customerId);
+      return new ResponseEntity<StandardResponse>(
+              new StandardResponse(200,"success",customerDto),
+                      HttpStatus.OK);
 
   }
+
 
   @GetMapping(
           path ="/get-all-customer"
