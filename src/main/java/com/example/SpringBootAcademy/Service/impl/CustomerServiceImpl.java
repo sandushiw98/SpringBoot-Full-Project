@@ -8,6 +8,7 @@ import com.example.SpringBootAcademy.Dto.request.CustomerUpdateDto;
 import com.example.SpringBootAcademy.Entity.Customer;
 import com.example.SpringBootAcademy.Repository.CustomerRepo;
 import com.example.SpringBootAcademy.Service.CustomerService;
+import com.example.SpringBootAcademy.exception.NotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -89,6 +90,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<CustomerDto> getAllCustomers() {
         List<Customer> getAllCustomer = customerRepo.findAll();
+        if(getAllCustomer.size()>0){
         List<CustomerDto> customerDtoList = new ArrayList<>();
 
         for(Customer customer : getAllCustomer){
@@ -107,6 +109,9 @@ public class CustomerServiceImpl implements CustomerService {
         }
 
         return customerDtoList ;
+        }else{
+           throw new NotFoundException("No customer Found");
+        }
     }
 
     @Override
